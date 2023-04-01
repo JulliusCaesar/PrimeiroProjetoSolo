@@ -1,6 +1,10 @@
 # Importando os pacotes e funções necessárias
 import PySimpleGUI as sg
 from view import create_main_window
+from exam import create_exam_window
+from manutencao import create_manu_window
+from entrada_dados import create_entrada_window
+
 
 
 
