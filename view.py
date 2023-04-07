@@ -15,7 +15,7 @@ def menu_bar():
         ],
         [
              "&Sobre",
-            ["&Créditos::credits", "&Versão::version"],
+            ["&Versão::version"],
         ]
     ]
     return menu

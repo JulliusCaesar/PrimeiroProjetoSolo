@@ -168,5 +168,8 @@ if __name__ == "__main__":
             window.close()
             window = create_main_window()
             
+        elif "::version" in event:
+            sg.popup("=== Versão do sistema 1.0.0 ===\n=== Autor: Júlio César ===", title="Créditos")
+            
     # Encerrar a janela
     window.close()
