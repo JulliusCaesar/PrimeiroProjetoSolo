@@ -124,5 +124,14 @@ if __name__ == "__main__":
             confirmar = sg.popup_ok_cancel('Tem certeza que deseja alterar as informações?', title="ATENÇÃO!")
             if confirmar == 'OK':
                 atualizar_exame(values['-MANUTENÇÃO_EXAME-'].upper(), values['-MANUTENÇÃO_VALOR-'].replace(',','.'), values['-MANUTENÇÃO_SALDO-'], values['-PROCURAR_ID-'],)
+            
+            window.close()
+            window = create_main_window()
+        
+        elif event == '-VOLTAR_MANUTENCAO-':
+            window.close()
+            window = create_main_window()
+        
+        
     # Encerrar a janela
     window.close()
