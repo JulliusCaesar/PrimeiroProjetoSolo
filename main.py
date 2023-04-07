@@ -140,6 +140,32 @@ if __name__ == "__main__":
         elif event == '-VOLTAR_VISUALIZAÇÃO-':
             window.close()
             window = create_main_window()
+        
+        elif "::utilizado" in event:
+            window.close()
+            window = create_entrada_window()
+        
+        elif event == '-mes_selecionado-':
+            mes_selecionado = refresh_dados_mes(values['-mes_selecionado-'])
+            for i in range (len(mes_selecionado)):
+                window[f'-item{i}-'].update(mes_selecionado[i][1])
+            
+        elif event == '-confirmar_cadastro-':
+            entrada_saldo = []
+            for count in values:
+                if values[count] in ['janeiro', 'fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']:
+                    entrada_saldo.append(values[count])
+                else:
+                    try:
+                        entrada_saldo.append(int(values[count]))
+                    except:
+                        sg.popup_error('Digite somente Números Inteiros sem ponto ou virgula!', title="ATENÇÃO!")
+            print(entrada_saldo)
+            exames_mes_escolhido(entrada_saldo)
+            
+        elif event == '-voltar_cadastro-':
+            window.close()
+            window = create_main_window()
             
     # Encerrar a janela
     window.close()
