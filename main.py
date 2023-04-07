@@ -4,6 +4,7 @@ from view import create_main_window
 from exam import create_exam_window
 from manutencao import create_manu_window
 from entrada_dados import create_entrada_window
+from visualizacao import create_visualizacao_window
 from query_list import cadastro_exames, pesquisa_id, pesquisa_exame, atualizar_exame
 
 
@@ -132,6 +133,13 @@ if __name__ == "__main__":
             window.close()
             window = create_main_window()
         
+        elif '::visalizar_exames' in event:
+            window.close()
+            window = create_visualizacao_window()
         
+        elif event == '-VOLTAR_VISUALIZAÇÃO-':
+            window.close()
+            window = create_main_window()
+            
     # Encerrar a janela
     window.close()
