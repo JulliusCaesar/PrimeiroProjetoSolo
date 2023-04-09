@@ -1,6 +1,7 @@
 import sqlite3
 from contextlib import closing
 import PySimpleGUI as sg
+import pandas as pd
 
 
 # Query para cadastrar um novo exame no sistema, recebendo os parâmetros que são passados pela tela de exam
@@ -59,4 +60,22 @@ def atualizar_exame(item, valor, saldo, id):
                 conexao.commit() 
             except:
                 conexao.rollback()
-                
+
+# Query para gerar os arquivos xlsx que serão salvos, aqui resolvi usar pandas para ajudar na manipulação e geração dos arquivos xlsx
+def gerar_arquivo():
+    
+    with sqlite3.connect('laboratorio.db') as conexao:
+            
+        query = 'SELECT sum(valor * janeiro) as Janeiro, sum(valor * fevereiro) as Fevereiro, sum(valor * março) as Março, sum(valor * abril) as Abril, sum(valor * maio) as Maio, sum(valor * junho) as Junho, sum(valor * julho) as Julho, sum(valor * agosto) as Agosto, sum(valor * setembro) as Setembro, sum(valor * outubro) as Outubro, sum(valor * novembro) as Novembro, sum(valor * dezembro) as Dezembro  FROM controle'
+        
+        df = pd.read_sql(query, conexao)
+
+    df.to_excel('Fechamento.xlsx', index=False)
+
+    with sqlite3.connect('laboratorio.db') as conexao:
+        
+        query = 'SELECT * FROM controle'
+        
+        df = pd.read_sql(query, conexao)
+        
+    df.to_excel('Controle.xlsx', index=False)

@@ -42,6 +42,9 @@ def create_visualizacao_window(title=None, theme="DarkTeal6", size=(1200, 600)):
                sg.Table(values=refresh_visualizacao_window(), headings=['Id', 'Exame', 'Valor', 'Saldo', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro', 'Saldo Restante', 'Total Gasto R$'], auto_size_columns=True, justification='center',vertical_scroll_only=False, alternating_row_color='blue', num_rows=min(25,25))
             ],
             [
+                sg.Button('Gerar arquivo', key='-GERAR_ARQUIVO-')
+            ]
+            [
                 sg.Button('Voltar',key='-VOLTAR_VISUALIZAÇÃO-')
             ]
            
