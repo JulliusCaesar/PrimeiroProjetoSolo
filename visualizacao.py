@@ -43,7 +43,7 @@ def create_visualizacao_window(title=None, theme="DarkTeal6", size=(1200, 600)):
             ],
             [
                 sg.Button('Gerar arquivo', key='-GERAR_ARQUIVO-')
-            ]
+            ],
             [
                 sg.Button('Voltar',key='-VOLTAR_VISUALIZAÇÃO-')
             ]
