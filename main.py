@@ -6,7 +6,7 @@ from manutencao import create_manu_window
 from entrada_dados import create_entrada_window
 from visualizacao import create_visualizacao_window
 from query_list_mes import refresh_dados_mes, exames_mes_escolhido
-from query_list import cadastro_exames, pesquisa_id, pesquisa_exame, atualizar_exame
+from query_list import cadastro_exames, pesquisa_id, pesquisa_exame, atualizar_exame, gerar_arquivo
 
 
 
@@ -137,6 +137,11 @@ if __name__ == "__main__":
         elif '::visalizar_exames' in event:
             window.close()
             window = create_visualizacao_window()
+        
+        elif event == '-GERAR_ARQUIVO-':
+            confirmar_arquivo = sg.popup_ok_cancel('Essa ação irá gerar os arquivos Controle.xlsx e \nFechamento.xlsx \nDeseja Continuar?', title='ATENÇÃO')
+            if confirmar_arquivo == 'OK':
+                gerar_arquivo()
         
         elif event == '-VOLTAR_VISUALIZAÇÃO-':
             window.close()
