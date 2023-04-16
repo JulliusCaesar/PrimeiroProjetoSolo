@@ -31,7 +31,7 @@ def refresh_visualizacao_window():
             return results
     
 
-def create_visualizacao_window(title=None, theme="DarkTeal6", size=(1200, 600)):
+def create_visualizacao_window(title=None, theme="DarkTeal6", size=(1200, 600), location=(100,50)):
     sg.theme(theme)
     
     layout = [ 
@@ -54,6 +54,6 @@ def create_visualizacao_window(title=None, theme="DarkTeal6", size=(1200, 600)):
     else:
         title = title
     
-    window = sg.Window(title, layout, size= size, disable_close=True, resizable=True, finalize=True)
+    window = sg.Window(title, layout, size= size, disable_close=True, resizable=True, finalize=True, location=location)
     # Feche a janela
     return window

@@ -72,7 +72,7 @@ def frame_direito():
     ]
     return frame
 
-def create_entrada_window(title=None, theme="DarkTeal6"):
+def create_entrada_window(title=None, theme="DarkTeal6", location=(None, None)):
     sg.theme(theme)
     ano = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto','setembro', 'outubro', 'novembro', 'dezembro']
     
@@ -113,7 +113,7 @@ def create_entrada_window(title=None, theme="DarkTeal6"):
     else:
         title = title
     
-    window = sg.Window(title, layout, resizable=True, finalize=True)
+    window = sg.Window(title, layout, resizable=True, finalize=True, location=location, disable_close=True)
     
     # Feche a janela
     

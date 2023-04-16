@@ -21,7 +21,7 @@ def menu_bar():
     return menu
 
 # Criar a janela principal
-def create_main_window(title=None, theme="DarkTeal6", size=(1100, 500), font=("Arial", 10), location=(None, None)):
+def create_main_window(title=None, theme="DarkTeal6", size=(1100, 500), font=("Arial", 10), location=(120, 150)):
     # Definindo o tema
     sg.theme(theme)
     

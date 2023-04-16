@@ -3,7 +3,7 @@ import PySimpleGUI as sg
 
 
 # Cria a janela principal
-def create_manu_window(title=None, theme="DarkTeal6", size=(500, 220), font=("Arial", 10), location=(None, None)):    
+def create_manu_window(title=None, theme="DarkTeal6", size=(500, 220), font=("Arial", 10), location=(400, 270)):    
     # Definindo o nosso tema
     sg.theme(theme)
 
