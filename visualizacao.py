@@ -31,7 +31,7 @@ def refresh_visualizacao_window():
             return results
     
 
-def create_visualizacao_window(title=None, theme="DarkTeal6", size=(1200, 600), location=(100,50)):
+def create_visualizacao_window(title=None, theme="DarkTeal6", size=(1200, 600), location=(None,None)):
     sg.theme(theme)
     
     layout = [ 

@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 # Cria a janela principal
-def create_exam_window(title=None, theme="DarkTeal6", size=(500, 200), location=(400, 270)):    
+def create_exam_window(title=None, theme="DarkTeal6", size=(500, 200), location=(None, None)):    
     # Definindo o nosso tema
     sg.theme(theme)
 
