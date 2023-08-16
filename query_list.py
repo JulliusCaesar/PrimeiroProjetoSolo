@@ -61,21 +61,47 @@ def atualizar_exame(item, valor, saldo, id):
             except:
                 conexao.rollback()
 
-# Query para gerar os arquivos xlsx que serão salvos, aqui resolvi usar pandas para ajudar na manipulação e geração dos arquivos xlsx
+# Query para gerar o arquivo xlsx que será salvo, aqui resolvi usar pandas para ajudar na manipulação e geração dos arquivos xlsx
 def gerar_arquivo():
     
     with sqlite3.connect('laboratorio.db') as conexao:
-            
-        query = 'SELECT sum(valor * janeiro) as Janeiro, sum(valor * fevereiro) as Fevereiro, sum(valor * março) as Março, sum(valor * abril) as Abril, sum(valor * maio) as Maio, sum(valor * junho) as Junho, sum(valor * julho) as Julho, sum(valor * agosto) as Agosto, sum(valor * setembro) as Setembro, sum(valor * outubro) as Outubro, sum(valor * novembro) as Novembro, sum(valor * dezembro) as Dezembro  FROM controle'
-        
-        df = pd.read_sql(query, conexao)
-
-    df.to_excel('Fechamento.xlsx', index=False)
-
-    with sqlite3.connect('laboratorio.db') as conexao:
-        
-        query = 'SELECT * FROM controle'
-        
-        df = pd.read_sql(query, conexao)
-        
-    df.to_excel('Controle.xlsx', index=False)
+        with closing(conexao.cursor()) as cursor:
+            cursor.execute('SELECT * FROM controle')
+            query = 'SELECT * FROM controle'
+            resultado = cursor.fetchall()
+            df = pd.read_sql(query, conexao)
+    
+    soma_janeiro = 0
+    soma_fevereiro = 0
+    soma_marco = 0
+    soma_abril = 0
+    soma_maio = 0
+    soma_junho = 0
+    soma_julho = 0
+    soma_agosto = 0
+    soma_setembro = 0
+    soma_outubro = 0
+    soma_novembro = 0
+    soma_dezembro = 0
+    
+    id_len = len(df['id']) + 1
+    for i in df['id']:
+        soma_janeiro += df['valor'][i - 1] * df['janeiro'][i - 1]
+        soma_fevereiro += df['valor'][i - 1] * df['fevereiro'][i - 1]
+        soma_marco += df['valor'][i - 1] * df['março'][i - 1]
+        soma_abril += df['valor'][i - 1] * df['abril'][i - 1]
+        soma_maio += df['valor'][i - 1] * df['maio'][i - 1]
+        soma_junho += df['valor'][i - 1] * df['junho'][i - 1]
+        soma_julho += df['valor'][i - 1] * df['julho'][i - 1]
+        soma_agosto += df['valor'][i - 1] * df['agosto'][i - 1]
+        soma_setembro += df['valor'][i - 1] * df['setembro'][i - 1]
+        soma_outubro += df['valor'][i - 1] * df['outubro'][i - 1]
+        soma_novembro += df['valor'][i - 1] * df['novembro'][i - 1]
+        soma_dezembro += df['valor'][i - 1] * df['dezembro'][i - 1]
+    
+    frame = [id_len,'','','Total', soma_janeiro, soma_fevereiro, soma_marco, soma_abril, soma_maio, soma_junho, soma_julho, soma_agosto, soma_setembro, soma_outubro, soma_novembro, soma_dezembro]
+    resultado.append(frame)
+    
+    df2 = pd.DataFrame(resultado)
+    df2.columns = ['Id', 'Item', 'Saldo', 'Valor', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Saldo Restante', 'Total']
+    df2.to_excel('Resultado.xlsx', index=False)

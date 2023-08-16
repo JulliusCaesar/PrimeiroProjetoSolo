@@ -86,7 +86,7 @@ if __name__ == "__main__":
             window['-MANUTENÇÃO_EXAME-'].update(readonly=False)
             window['-MANUTENÇÃO_VALOR-'].update(readonly=True)
             window['-MANUTENÇÃO_SALDO-'].update(readonly=True)
-            window['-PESQUISAR_ID-'].update(visible=False)
+            window['-PESQUISAR_ID-'].update(visible=False) 
             window['-PESQUISAR_EXAME-'].update(visible=True)
         
         # Evento que usa as informações de ID para pesquisar no BD
@@ -104,10 +104,9 @@ if __name__ == "__main__":
                 window['-MANUTENÇÃO_EXAME-'].update(resultado_id[1])
                 window['-MANUTENÇÃO_VALOR-'].update(resultado_id[2])
                 window['-MANUTENÇÃO_SALDO-'].update(resultado_id[3])
-                window['-MANUTENÇÃO_EXAME-'].update(readonly=False)
-                window['-MANUTENÇÃO_VALOR-'].update(readonly=False)
-                window['-MANUTENÇÃO_SALDO-'].update(readonly=False)
-        
+                window['-MANUTENÇÃO_EXAME-'].update(readonly = False)
+                window['-MANUTENÇÃO_VALOR-'].update(readonly = False)
+                window['-MANUTENÇÃO_SALDO-'].update(readonly = False)
         elif event == "-PESQUISAR_EXAME-":
                 
             exame_pesquisa = str(values['-MANUTENÇÃO_EXAME-']).upper()            
@@ -119,8 +118,8 @@ if __name__ == "__main__":
                 window['-PROCURAR_ID-'].update(resultado_exame[0])
                 window['-MANUTENÇÃO_VALOR-'].update(resultado_exame[2])
                 window['-MANUTENÇÃO_SALDO-'].update(resultado_exame[3])
-                window['-MANUTENÇÃO_VALOR-'].update(readonly=False)
-                window['-MANUTENÇÃO_SALDO-'].update(readonly=False)
+                window['-MANUTENÇÃO_VALOR-'].update(readonly = False)
+                window['-MANUTENÇÃO_SALDO-'].update(readonly = False)
         
         elif event == '-SALVAR_EXAME-':
             confirmar = sg.popup_ok_cancel('Tem certeza que deseja alterar as informações?', title="ATENÇÃO!")
